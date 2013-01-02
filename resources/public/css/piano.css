@@ -1,0 +1,35 @@
+body {
+	background: gray;
+}
+
+.key {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 0 0 4px 4px;
+    float: left;
+    height: 180px;
+    margin: 0 2px 2px 0;
+    position: relative;
+    width: 50px;
+}
+
+
+.key.black1:after {
+    left: -20px;
+}
+.key.black:after {
+    background: none repeat scroll 0 0 #000000;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 1px 1px 0 #555555, 2px 2px 0 #555555;
+    content: "";
+    display: block;
+    height: 117px;
+    left: -16px;
+    position: absolute;
+    top: -2px;
+    width: 32px;
+}
+.key.black {
+    margin: 0;
+    width: 0;
+    z-index: 2;
+}
