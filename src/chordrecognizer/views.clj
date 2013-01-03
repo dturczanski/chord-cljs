@@ -5,6 +5,13 @@
       [element :refer [javascript-tag]]
       [page :refer [include-js include-css]]]))
 
+(defn- piano-divs []
+  (let [black-keys #{1 3 6 8 10}
+        white? (fn[key] 
+                 (nil? (black-keys (mod key 12))))]
+    (map #(vector :div {:value % :id (str "key" %) :class (if (white? %) "key" "key black")}) (range 48 84))))
+
+
 ; When using {:optimizations :whitespace}, the Google Closure compiler combines
 ; its JavaScript inputs into a single file, which obviates the need for a "deps.js"
 ; file for dependencies. However, true to ":whitespace", the compiler does not remove
@@ -21,7 +28,10 @@
   (html5
     [:head
       [:title "Hello World"]
-      (include-clojurescript "/js/main.js")
       (include-css "css/piano.css")]
     [:body
-      [:h1 "Hello World"]]))
+      [:h1 "Hello World"]
+      [:p#chord]
+      (piano-divs)
+      (include-clojurescript "/js/main.js")
+      (javascript-tag "chordrecognizer.piano.initPiano();")]))

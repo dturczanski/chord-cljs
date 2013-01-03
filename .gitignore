@@ -11,4 +11,4 @@ pom.xml
 .settings
 .lein-cljsbuild*
 bin
-resources/public/main.js
+resources/public/js/main.js

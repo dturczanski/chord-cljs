@@ -1,30 +1,31 @@
 (ns chordrecognizer.piano
-  (:use [webfui.framework :only [launch-app]])
-  (:use-macros [webfui.framework.macros :only [add-dom-watch]]))
+  (:use [domina :only [log attr by-id set-text! classes set-classes!]]
+        [domina.css :only [sel]]
+        [domina.events :only [listen! target]]))
+  ;(:require [goog.events :as goog.events])
 
-(defn- piano-divs []
-  (let [black-keys #{1 3 6 8 10}
-        white? (fn[key] 
-                 (nil? (black-keys (mod key 12))))]
-    (map #(vector :div {:class (if (white? %) "key" "key black")}) (range 48 84))))
+(def keys-pressed (atom #{}))
 
-(defn render-all [state]
-  (let [{:keys [a b]} state]
-    [:div 
-     (piano-divs)
-     [:div [:input#a {:watch :watch :value a}]
-      " plus "
-      [:input#b {:watch :watch :value b}] 
-      [:p " equals "]
-      [:span (+ a b)]]]))
+(defn update-chord-guess [chord]
+  (set-text! (by-id "chord") (str "Chord: " chord)))
 
-(defn valid-integer [s] 
-  (and (< (count s) 15) (re-matches #"^[0-9]+$" s)))
+(defn key-clicked [e]
+  (let [key-div (.-target (.-evt e))
+        key (js/parseInt (attr key-div "value"))
+        class-set (set (classes key-div))]
+    (if (class-set "pressed")
+      (do
+        (set-classes! key-div (disj class-set "pressed"))
+        (swap! keys-pressed disj key))
+      (do 
+        (set-classes! key-div (conj class-set "pressed"))
+        (swap! keys-pressed conj key))
+      ))
+  (log (map #(str % ", ")  @keys-pressed))
+  (update-chord-guess (map #(str % ", ")  @keys-pressed)))
 
-(add-dom-watch :watch [state new-element]
-               (let [{:keys [value id]} (second new-element)]
-                 (when (valid-integer value)
-                   {id (js/parseInt value)})))
+(defn ^export initPiano[]
+  (let [keys (.getElementsByClassName js/document "key")]
+    (listen! keys :click key-clicked)))
 
-(launch-app (atom {:a 0 :b 0}) render-all)
-
+(defn ^export sell [expr] (sel expr))

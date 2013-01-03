@@ -33,3 +33,8 @@ body {
     width: 0;
     z-index: 2;
 }
+
+.key.pressed, .key:active, .key.black.pressed:after, .key.black:active:after {
+    background: none repeat scroll 0 0 #F4F3F3;
+    box-shadow: 3px 2px 3px #999999 inset, -3px 2px 3px #999999 inset;
+}
