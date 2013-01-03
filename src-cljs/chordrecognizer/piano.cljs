@@ -27,7 +27,11 @@
 (def keys-pressed (atom #{}))
 
 (defn ^export update-chord-guess [chord]
-  (set-text! (by-id "chord") (str "Chord: " chord)))
+  (if-not (nil? chord)
+    (let [root (name (:root chord))
+          type (name (:chord-type chord))]
+      (set-text! (by-id "chord") (str "Chord: " root " " type)))
+    (set-text! (by-id "chord") (str "Chord not recognized"))))
 
 (defn key-clicked [e]
   (let [key-div (.-target (.-evt e))

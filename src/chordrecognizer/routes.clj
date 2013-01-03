@@ -23,12 +23,12 @@
 
 (defn make-safe-for-cljs-reader [k]
   "Adds a prefix to the keyword. Handy for avoiding errors with keyword beginning with numbers."
-  (keyword (str "_" (.substring (str k) 1))))
+  (keyword (str "_" (name k))))
 
 (defn recognize-chord [notes]
   (if-let [chord (pitch/find-chord notes)]
       (assoc chord :chord-type (make-safe-for-cljs-reader (:chord-type chord)))
-      "none"))
+      nil))
 
 (defroutes main-routes
   (GET "/" [] (index-page))
