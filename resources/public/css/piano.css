@@ -43,3 +43,7 @@ body {
     background: none repeat scroll 0 0 #545353;
     box-shadow: 3px 2px 3px #444 inset, -3px 2px 3px #444 inset;
 }
+
+#piano {
+	height: 180px;
+}

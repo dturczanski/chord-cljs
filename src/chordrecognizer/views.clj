@@ -27,11 +27,11 @@
 (defn index-page []
   (html5
     [:head
-      [:title "Hello World"]
+      [:title "Chord recognizer"]
       (include-css "css/piano.css")]
     [:body
-      [:h1 "Hello World"]
-      [:p#chord]
-      (piano-divs)
+      [:h1 "Select keys and get the chord!"]
+      [:div#piano (piano-divs)]
+      [:h2#chord]
       (include-clojurescript "/js/main.js")
       (javascript-tag "chordrecognizer.piano.initPiano();")]))

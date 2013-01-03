@@ -30,7 +30,7 @@
   (if-not (nil? chord)
     (let [root (name (:root chord))
           type (.substring (name (:chord-type chord)) 1)]
-      (set-text! (by-id "chord") (str "Chord: " root " " type)))
+      (set-text! (by-id "chord") (str root " " type)))
     (set-text! (by-id "chord") (str "Chord not recognized"))))
 
 (defn key-clicked [e]
