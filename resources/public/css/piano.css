@@ -1,5 +1,6 @@
 body {
-	background: gray;
+	background: url('/img/nasty_fabric.png');
+	padding: 1em;
 }
 
 .key {
@@ -44,6 +45,26 @@ body {
     box-shadow: 3px 2px 3px #444 inset, -3px 2px 3px #444 inset;
 }
 
+p {
+	text-align: center;
+}
+
 #piano {
 	height: 180px;
+	width: 1095px;
+	border: 2px solid black;
+	border-radius: 0 0 4px 4px;
+    overflow: hidden;
+    padding: 2px 0 0 2px;
+    margin: 10px auto;
+}
+
+#chord {
+	text-shadow: 0 1px 1px #1F1206;
+	font-size: 100px;
+    letter-spacing: -2px;
+    line-height: 1;
+    font-weight: bold;
+    color: purple;
+    text-align: center;
 }

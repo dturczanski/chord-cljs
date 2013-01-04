@@ -8,6 +8,7 @@
                  [overtone "0.8.0-RC14"]
                  [compojure "1.0.4"]
                  [hiccup "1.0.0"]
+                 [hiccup-bootstrap "0.1.1"]
                  [org.clojure/google-closure-library "0.0-2029"]
                  [org.clojure/google-closure-library-third-party "0.0-2029"]
                  [domina "1.0.1"]]

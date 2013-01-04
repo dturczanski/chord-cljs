@@ -1,7 +1,8 @@
 (ns chordrecognizer.routes
  (:use compojure.core
         chordrecognizer.views
-        [hiccup.middleware :only (wrap-base-url)])
+        [hiccup.middleware :only (wrap-base-url)]
+        [hiccup.bootstrap.middleware :only (wrap-bootstrap-resources)])
   (:require [compojure.route :as route]
             [compojure.handler :as handler]
             [compojure.response :as response]
@@ -38,4 +39,5 @@
 
 (def app
   (-> (handler/site main-routes)
-      (wrap-base-url)))
+      (wrap-base-url)
+      (wrap-bootstrap-resources)))

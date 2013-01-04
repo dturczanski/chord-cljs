@@ -1,4 +1,5 @@
 (ns chordrecognizer.views
+  (:use hiccup.bootstrap.page)
   (:require
     [hiccup
       [page :refer [html5]]
@@ -28,9 +29,13 @@
   (html5
     [:head
       [:title "Chord recognizer"]
+      (include-bootstrap)
       (include-css "css/piano.css")]
     [:body
-      [:h1 "Select keys and get the chord!"]
+      [:p 
+       [:i {:class "icon-music"}] 
+       "Select keys and get the chord! - "
+       [:a {:href "http://jvmsoup.com"} "author's blog"]]
       [:div#piano (piano-divs)]
       [:h2#chord]
       (include-clojurescript "/js/main.js")
