@@ -2,7 +2,7 @@
   (:use [domina :only [log attr by-id set-text! classes set-classes!]]
         [domina.css :only [sel]]
         [domina.events :only [listen! target]])
-  (:require 
+  (:require
     [cljs.reader :as reader]
     [clojure.string :as string]
     [goog.net.XhrIo :as xhrio]
@@ -26,7 +26,7 @@
 
 (def keys-pressed (atom #{}))
 
-(defn ^export update-chord-guess [chord]
+(defn update-chord-guess [chord]
   (if-not (nil? chord)
     (let [root (name (:root chord))
           type (.substring (name (:chord-type chord)) 1)]
@@ -57,10 +57,6 @@
            "POST" @keys-pressed))
   ;(update-chord-guess (map #(str % ", ")  @keys-pressed)))
 
-(defn ^export initPiano[]
+(defn ^:export initPiano[]
   (let [keys (.getElementsByClassName js/document "key")]
     (listen! keys :click key-clicked)))
-
-(defn ^export sell [expr] (sel expr))
-
-(def b (reader/read-string ":_1"))
