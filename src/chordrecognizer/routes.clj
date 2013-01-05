@@ -18,7 +18,8 @@
                (catch java.lang.NullPointerException e (throw e)))]
     (when (pos? (count data))
       (try
-          (read-string data)
+          (binding [*read-eval* false] 
+            (read-string data))
           (catch java.lang.Exception _
             (throw invalid-request-body-error))))))
 
