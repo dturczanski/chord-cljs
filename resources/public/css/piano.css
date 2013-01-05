@@ -1,5 +1,4 @@
 body {
-	background: url('/img/nasty_fabric.png');
 	padding: 1em;
 }
 
@@ -50,6 +49,7 @@ p {
 }
 
 #piano {
+	background: gray;
 	height: 180px;
 	width: 1095px;
 	border: 2px solid black;
