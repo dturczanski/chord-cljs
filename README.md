@@ -1,15 +1,23 @@
-# chordrecognizer
+# Chord-cljs
 
-I'm an app. Or maybe I'm a library? I haven't decided yet. 
+A web app implemented in Clojurescript that allows to get a chord name based on pushed piano keys.
 
-The choice is up to you!
+Live demo : http://chord-cljs.herokuapp.com/
 
-## Usage
+## Running
 
-FIXME
+Run:
+lein ring server
+
+This should open a web browser with the application. You can also go to live demo listed above.
+
+
+## Using
+
+Click on the piano keys and the chord name shows up. Chord names might not be the simplest possible (chord recognition taken from the Overtone project).
 
 ## License
 
-Copyright © 2013 FIXME
+Copyright © 2013
 
 Distributed under the Eclipse Public License, the same as Clojure.
