@@ -29,6 +29,7 @@
   (html5
     [:head
       [:title "Chord recognizer"]
+      (include-js "//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js")
       (include-bootstrap)
       (include-css "css/piano.css")]
     [:body
