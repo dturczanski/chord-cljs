@@ -15,8 +15,16 @@
   :plugins [[lein-cljsbuild "0.2.9"]
             [lein-ring "0.7.0"]]
   :cljsbuild {
-    :builds [{:source-path "src-cljs"
+    :builds {:dev 
+             {:source-path "src-cljs"
               :compiler {:output-to "resources/public/js/main.js"
                          :optimizations :whitespace
-                         :pretty-print true}}]}
+                         :pretty-print true}}
+             :prod 
+             {:source-path "src-cljs"
+              :compiler {:output-to "resources/public/js/main.js"
+                         :optimizations :advanced
+                         :pretty-print false}}
+             
+             }}
   :ring {:handler chordrecognizer.routes/app})
