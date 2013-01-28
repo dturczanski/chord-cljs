@@ -4,6 +4,8 @@ A web app implemented in Clojurescript that allows to get a chord name based on 
 
 Live demo : http://chord-cljs.herokuapp.com/
 
+App uses [Overtone](https://github.com/overtone/overtone/) chord recognition algorithm. Clever div css copied from [javascript-piano](https://github.com/mrcoles/javascript-piano) and adjusted.
+
 ## Running
 
 Run:
